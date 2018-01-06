@@ -29,6 +29,7 @@ bot.command('/info', (ctx) => {
                 .get(`https://api.coinmarketcap.com/v1/ticker/`+result.name+`/`)
                 .then(res => {
                     const data = res.data[0];
+                    console.log('got ' + data.symbol );
                     ctx.reply(
                         data.name + ' - ' + data.symbol +
                         '\nRank: ' + data.rank + 
