@@ -6,7 +6,15 @@ const bot = new Telegraf(token);
 const axios = require('axios');
 const Ticker = require('./models/ticker');
 
+const usdFormatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 3
+});
 
+const numberFomatter = new Intl.NumberFormat('en-US', {
+    style: 'decimal'
+});
 
 bot.command('/info', (ctx) => {
     let text = ctx.update.message.text;
@@ -21,13 +29,12 @@ bot.command('/info', (ctx) => {
                 .get(`https://api.coinmarketcap.com/v1/ticker/`+result.name+`/`)
                 .then(res => {
                     const data = res.data[0];
-                    
                     ctx.reply(
                         data.name + ' - ' + data.symbol +
                         '\nRank: ' + data.rank + 
-                        '\nCirculating Supply: '+ data.available_supply +
-                        '\nTotal Supply: '+  data.total_supply +
-                        '\nMax Supply: '+ data.max_supply
+                        '\nCirculating Supply: '+ numberFomatter.format(data.available_supply) +
+                        '\nTotal Supply: '+  numberFomatter.format(data.total_supply) +
+                        '\nMarketcap: '+ usdFormatter.format(data.market_cap_usd)
                     );
                 })
                 .catch(err => {
