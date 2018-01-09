@@ -16,7 +16,7 @@ const numberFomatter = new Intl.NumberFormat('en-US', {
     style: 'decimal'
 });
 
-bot.command('/gia', (ctx) => {
+bot.command('/i', (ctx) => {
     let text = ctx.update.message.text;
     let ticker = (text.slice(3)).toUpperCase();
 
