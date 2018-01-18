@@ -7,7 +7,7 @@ const bot = require('../config/bot');
 var addTickers = (req, res) => {
     
     axios
-        .get(`https://api.coinmarketcap.com/v1/ticker/?limit=1384`)
+        .get(`https://api.coinmarketcap.com/v1/ticker/?limit=1448`)
         .then(res => {
             
             const data = res.data;
