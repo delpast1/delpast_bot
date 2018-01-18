@@ -75,9 +75,8 @@ bot.command('/p', (ctx) => {
                                     priceFormatter.format(altcoin.price_btc) + ' | ' + changeFormatter.format(altcoin.percent_change_24h) + '%\n' +
                                     priceFormatter.format(currentAltETH) + ' | ' + changeFormatter.format(changeETH)+
                                     '%\nRank: ' + altcoin.rank + 
-                                    '\nMarketcap: '+ marketcapFormatter.format(altcoin.market_cap_usd) + '\n'
-                                    
-
+                                    '\nMarketcap: '+ marketcapFormatter.format(altcoin.market_cap_usd) +
+                                    '\nVolume: ' + marketcapFormatter.format(altcoin["24h_volume_usd"])
                                     // '\nCirculating Supply: '+ numberFomatter.format(altcoin.available_supply) +
                                     // '\nTotal Supply: '+  numberFomatter.format(altcoin.total_supply) +
                                 );
